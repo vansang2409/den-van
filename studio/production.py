@@ -67,19 +67,24 @@ def voice_asset(folder, shot, voices, mark):
     return timeline
 
 
-def visual_qc(folder, shot, keyframe, clip, refs, previous):
+def visual_qc(folder, shot, keyframe, clip, refs, previous, location=None):
     sources = [(name, path) for name in shot["cast"] for path in refs[name]]
     expected = {k: shot[k] for k in ("id", "action", "visual", "camera", "continuity", "cast", "duration")}
+    order = ["ảnh thật của " + name for name, _ in sources]
+    if location:
+        order.append("ảnh chuẩn bối cảnh " + shot["location"])
+    order += ["keyframe đã duyệt", "ba khung hình thực đầu/giữa/cuối"]
     prompt = ("Đánh giá shot đối với yêu cầu và continuity trước. Các ảnh lần lượt gồm "
-              + ", ".join(name for name, _ in sources) + " (tham chiếu), keyframe đã duyệt, "
-              "và ba khung hình thực đầu/giữa/cuối. Với shot trống không thêm động vật. "
+              + ", ".join(order) + ". "
+              "Với shot trống không thêm động vật. Khi có ảnh chuẩn bối cảnh, đối chiếu mốc cố định nhìn thấy được "
+              "trong góc máy này và chấp nhận thay đổi hợp lý về ánh sáng, thời tiết và đạo cụ di động. "
               "Đánh giá dấu hiệu nhìn thấy về nhận diện, giải phẫu, bố cục, địa điểm, logic. "
               "Ba ảnh không đủ xác minh nhịp chuyển động và tiếng. Trả JSON "
               '{"pass":true,"reason":"ghi nhận quan sát hoặc lỗi cụ thể cần sửa"}. '
               + encoded({"shot": expected, "previous_continuity": previous}))
     instruction = role("qc")
     key = signature(prompt, instruction, os.getenv("STUDIO_TEXT_MODEL"), digest(clip),
-                    digest(keyframe), [digest(p) for _, p in sources])
+                    digest(keyframe), [digest(p) for _, p in sources], digest(location) if location else None)
     receipt = folder / (key + ".json")
     if not receipt.exists():
         folder.mkdir(parents=True, exist_ok=True)
@@ -95,8 +100,8 @@ def visual_qc(folder, shot, keyframe, clip, refs, previous):
                 if not path.exists():
                     raise ValueError(f"Không đọc được {shot['id']} tại {t}s. Dùng retake video.")
                 frames.append(path)
-            decision = providers.response(instruction, prompt,
-                                          [p for _, p in sources] + [keyframe] + frames, structured=True)
+            images = [p for _, p in sources] + ([location] if location else []) + [keyframe] + frames
+            decision = providers.response(instruction, prompt, images, structured=True)
         nonempty(decision, ["reason"])
         if type(decision.get("pass")) is not bool:
             raise ValueError(f"QC trả kết quả sai kiểu cho {shot['id']}. Chạy lại run.")
@@ -138,7 +143,7 @@ def publishing(folder, timeline):
     return load(path)
 
 
-def produce(ep, board_version, rows, refs, voices, marks):
+def produce(ep, board_version, rows, refs, voices, marks, locations=None):
     ep = Path(ep).resolve()
     assets = ep / "assets"
     shots = [shot for shot, _, _ in rows]
@@ -163,15 +168,17 @@ def produce(ep, board_version, rows, refs, voices, marks):
         sid = shot["id"]
         d = shot["duration"]
         previous = timeline[-1]["continuity"] if timeline else ""
+        place = (locations or {}).get(shot.get("location"))
+        qc_options = {"location": place} if place else {}
         mark = marks.get("video/" + sid, {})
         clip = video_asset(assets / "clips", shot, image, mark)
         try:
-            result = visual_qc(assets / "visual-qc", shot, image, clip, refs, previous)
+            result = visual_qc(assets / "visual-qc", shot, image, clip, refs, previous, **qc_options)
         except VisualDefect as defect:
             repair = {"reason": str(defect), "source": clip.name, "request": mark}
             clip = video_asset(assets / "clips", shot, image, repair)
             try:
-                result = visual_qc(assets / "visual-qc", shot, image, clip, refs, previous)
+                result = visual_qc(assets / "visual-qc", shot, image, clip, refs, previous, **qc_options)
             except VisualDefect as remaining:
                 raise ValueError(f"{remaining}. Đã thử sửa hình một lần. Dùng retake video hoặc frame cho {sid}.") from None
         results.append(result)

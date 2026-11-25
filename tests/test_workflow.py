@@ -27,7 +27,7 @@ def respond(instruction, prompt, *images, structured=False):
                             "seconds": 80} for i in range(6)]}
     if '"shots"' in prompt:
         return {"shots": [
-            {"duration": 10, "cast": list(CAST), "visual": "Mái hiên",
+            {"duration": 10, "location": "nha-mai-ngoi", "cast": list(CAST), "visual": "Mái hiên",
              "action": "Hai bạn nằm trên nền gạch.", "camera": "Ngang tầm mắt",
              "sound": "Mưa rơi", "continuity": f"Dấu chân thứ {i}", "lines": []}
             for i in range(8)
@@ -35,7 +35,7 @@ def respond(instruction, prompt, *images, structured=False):
     raise AssertionError("Bài kiểm thử không chờ loại yêu cầu này.")
 
 
-def produce_fixture(ep, board, rows, refs, voices, marks):
+def produce_fixture(ep, board, rows, refs, voices, marks, locations):
     # Chỉ thay phần tạo media; CLI vẫn tự lập biên nhận và tính mã bản cuối.
     folder = ep / "deliveries" / signature(board, marks)
     for filename in ("film.mp4", "thumbnail.jpg", "shorts/mua.mp4"):
@@ -192,7 +192,7 @@ class WorkflowTest(unittest.TestCase):
         self.cli("run", "--live")
         self.cli("ref", "Đen", self.den)
         self.cli("ref", "Vằn", self.van)
-        self.frame.side_effect = [PNG, TimeoutError("mất kết nối")]
+        self.frame.side_effect = [PNG, PNG, TimeoutError("mất kết nối")]
         with self.assertRaises(TimeoutError):
             self.cli("run", "--live")
         self.assertEqual(len(list((self.ep / "frames").glob("*.png"))), 1)
@@ -202,6 +202,52 @@ class WorkflowTest(unittest.TestCase):
         self.cli("run", "--live")
         self.assertEqual(self.frame.call_count, 47)
         self.at("board")
+
+    def test_next_episode_reuses_approved_location_and_character_profiles(self):
+        previous = self.ep
+        self.create_board()
+        self.assertIn("nha-mai-ngoi", (previous / "storyboard.html").read_text(encoding="utf-8"))
+        self.ep = self.root / "next"
+        with self.assertRaisesRegex(ValueError, "duyệt storyboard"):
+            self.cli("init", "--brief", "Hai bạn trở lại sân.", "--from-episode", previous)
+        self.ep = previous
+        first_board = self.approve("board")
+        old = self.at("voices")
+
+        self.ep = self.root / "next"
+        self.cli("init", "--brief", "Hai bạn trở lại sân.", "--from-episode", previous)
+        saved_location = self.ep / "locations" / "nha-mai-ngoi.png"
+        self.assertEqual(saved_location.read_bytes(), old["locations"]["nha-mai-ngoi"].read_bytes())
+        self.assertEqual(load(self.ep / "storyboard-nguon.json")["board"], first_board)
+        for char in CAST:
+            source = planning.character_profile(previous, old["identity"], char)
+            self.assertEqual(planning.character_profile(self.ep, old["identity"], char).read_bytes(),
+                             source.read_bytes())
+        save(self.ep / "kich-ban.md", "Đen và Vằn trở lại mái hiên trong nắng.")
+        self.approve("script")
+        self.respond.reset_mock()
+        self.frame.reset_mock()
+        self.cli("run", "--live")
+        self.assertEqual(self.at("board")["locations"]["nha-mai-ngoi"], saved_location)
+        self.assertEqual(self.frame.call_count, 48)
+        self.assertTrue(all(call.args[1][-1] == saved_location for call in self.frame.call_args_list))
+        self.assertTrue(all(call.kwargs.get("structured") for call in self.respond.call_args_list))
+
+    def test_location_retake_reuses_source_and_requires_approval(self):
+        self.create_board()
+        original_version = self.approve("board")
+        original = self.at("voices")["locations"]["nha-mai-ngoi"]
+        self.cli("retake", "location", "nha-mai-ngoi", "Giữ mặt sân, mở góc thấy cột hiên.")
+        self.at("locations")
+        self.frame.reset_mock()
+        self.frame.side_effect = [PNG + b"new location"] + [PNG] * 48
+        self.cli("run", "--live")
+        current = self.at("board")
+        self.assertEqual(self.frame.call_args_list[0].args[1], [original])
+        self.assertNotEqual(current["version"], original_version)
+        self.assertNotEqual(current["locations"]["nha-mai-ngoi"], original)
+        with self.assertRaises(ValueError):
+            self.cli("approve", "board", original_version)
 
     def test_retry_resumes_video_job_using_saved_id(self):
         folder = self.ep / "assets/clips"

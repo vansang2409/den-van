@@ -45,9 +45,9 @@ def init(ep, brief, pilot, previous=None):
             with episode_lock(previous):
                 phase, context = review(previous)
                 if phase not in ("voices", "produce", "final", "ready"):
-                    raise ValueError("Chọn tập trước đã được duyệt storyboard để kế thừa nhận diện.")
+                    raise ValueError("Chọn tập trước đã được duyệt storyboard để kế thừa nhân vật và bối cảnh.")
                 save(stage / "tap-truoc.md", read(previous / "kich-ban.md"))
-                save(stage / "bible.md", read(previous / "bible.md"))
+                shutil.copy2(previous / "bible.md", stage / "bible.md")
                 for filename in ("refs.json", "voices.json"):
                     if (previous / filename).is_file():
                         shutil.copy2(previous / filename, stage / filename)
@@ -56,6 +56,14 @@ def init(ep, brief, pilot, previous=None):
                         dest = stage / "refs" / image.name
                         dest.parent.mkdir(exist_ok=True)
                         shutil.copy2(image, dest)
+                for char in CAST:
+                    profile = planning.character_profile(previous, context["identity"], char)
+                    save(stage / "character" / profile.name, profile.read_bytes())
+                locations = planning.inherited_locations(previous)
+                locations.update(context["locations"])
+                for code, image in locations.items():
+                    save(stage / "locations" / f"{code}.png", image.read_bytes())
+                save(stage / "storyboard-nguon.json", {"episode": previous.name, "board": context["board"]})
         stage.rename(ep)
 
 
@@ -106,15 +114,23 @@ def review(ep):
     ctx.update(shots=shots, refs=refs)
     if any(not refs[c] for c in CAST):
         return "refs", ctx
-    identity, rows = planning.board_spec(ep, shots, refs)
+    places = planning.location_spec(ep, shots)
+    if any(not path.is_file() for path, _, _ in places.values()):
+        ctx["places"] = places
+        return "locations", ctx
+    locations = {code: spec[0] for code, spec in places.items()}
+    identity, rows = planning.board_spec(ep, shots, refs, locations)
+    ctx["locations"] = locations
     ctx.update(identity=identity, rows=rows)
     board = planning.board_key(identity, rows)
     if not board:
         return "frames", ctx
-    profiles = [ep / "character" / (identity + "-" + c + ".md") for c in CAST]
+    profiles = [planning.character_profile(ep, identity, c) for c in CAST]
     if not all(p.is_file() for p in profiles):
         return "frames", ctx
     board = signature(script, board, [digest(p) for p in profiles])
+    if locations:
+        board = signature(board, {code: digest(path) for code, path in locations.items()})
     ctx.update(version=board, file=ep / "storyboard.html", board=board)
     if not approved(ep, "board", board):
         return "board", ctx
@@ -145,7 +161,7 @@ def review(ep):
 
 def describe(stage, ctx):
     if stage in GATES:
-        labels = {"script": "kịch bản", "board": "ngoại hình, hình ảnh và storyboard", "final": "phim, Shorts và gói đăng"}
+        labels = {"script": "kịch bản", "board": "ngoại hình, bối cảnh và storyboard", "final": "phim, Shorts và gói đăng"}
         return f"Chờ bạn duyệt {labels[stage]}.\n{ctx['file']}\n{stage} {ctx['version']}"
     if stage == "ready":
         return f"Bạn đã duyệt bản cuối. Gói phát hành ở {ctx['file']}"
@@ -156,6 +172,7 @@ def describe(stage, ctx):
     return {"write": "Sẵn sàng phát triển ý tưởng và viết kịch bản.",
             "rewrite": "Đã nhận góp ý. Sẵn sàng sửa bản kịch bản.",
             "plan": "Kịch bản đã duyệt. Sẵn sàng chia cảnh.",
+            "locations": "Sẵn sàng dựng ảnh chuẩn cho các địa điểm mới hoặc được yêu cầu sửa.",
             "frames": "Sẵn sàng dựng keyframe theo ảnh thật.",
             "produce": "Storyboard đã duyệt. Sẵn sàng tạo clip, thu tiếng, QC và dựng phim."}[stage]
 
@@ -164,8 +181,8 @@ def run(ep, live):
     while True:
         stage, ctx = review(ep)
         if stage == "board":
-            planning.storyboard(ep, ctx["rows"], ctx["refs"], ctx["board"], ctx["identity"])
-        if stage not in {"write", "rewrite", "plan", "frames", "produce"} or not live:
+            planning.storyboard(ep, ctx["rows"], ctx["refs"], ctx["board"], ctx["identity"], ctx["locations"])
+        if stage not in {"write", "rewrite", "plan", "locations", "frames", "produce"} or not live:
             return
         if stage == "write":
             planning.episode_script(ep)
@@ -174,7 +191,7 @@ def run(ep, live):
             new_file = ep / "revisions" / (signature(request) + "-new.md")
             if not new_file.exists():
                 from .providers import response
-                revised = response(planning.role("story"), read(ep / "bible.md") + "\n" + read(ep / "dinh-huong.md")
+                revised = response(planning.role("story"), planning.world_context(ep) + "\n" + read(ep / "dinh-huong.md")
                     + "\nBản trước:\n" + read(ep / "revisions" / (request["source"] + ".md"))
                     + "\nViết lại đầy đủ theo góp ý: " + request["note"]
                     + "\nGiữ nhịp 8–10 phút. Mỗi dòng thoại theo mẫu **Đen** — lời nói hoặc **Vằn** — lời nói.")
@@ -183,11 +200,13 @@ def run(ep, live):
             (ep / "yeu-cau-sua.json").unlink()
         elif stage == "plan":
             save(ctx["file"], planning.plan(ep, ctx["folder"]))
+        elif stage == "locations":
+            planning.generate_locations(ctx["places"])
         elif stage == "frames":
-            planning.generate_frames(ep, ctx["identity"], ctx["rows"], ctx["refs"])
+            planning.generate_frames(ep, ctx["identity"], ctx["rows"], ctx["refs"], ctx["locations"])
         else:
             from .production import produce
-            output = produce(ep, ctx["board"], ctx["rows"], ctx["refs"], ctx["voices"], ctx["marks"])
+            output = produce(ep, ctx["board"], ctx["rows"], ctx["refs"], ctx["voices"], ctx["marks"], ctx["locations"])
             save(ctx["receipt"], {"output": Path(output).resolve().relative_to(ep).as_posix()})
 
 
@@ -197,7 +216,7 @@ def decide(ep, args):
         raise ValueError("Giai đoạn hoặc phiên bản đã đổi. Xem status và duyệt đúng bản hiện hành.")
     history = load(ep / "approvals.json")
     if stage == "board":
-        planning.storyboard(ep, ctx["rows"], ctx["refs"], ctx["board"], ctx["identity"])
+        planning.storyboard(ep, ctx["rows"], ctx["refs"], ctx["board"], ctx["identity"], ctx["locations"])
     history.append({"gate": stage, "version": args.version, "action": "approve", "by": args.by,
                     "time": datetime.now(timezone.utc).isoformat()})
     save(ep / "approvals.json", history)
@@ -228,13 +247,21 @@ def add_ref(ep, args):
 
 def retake(ep, args):
     stage, ctx = review(ep)
-    if args.shot not in {s["id"] for s in ctx.get("shots", [])}:
-        raise ValueError("Mã shot chưa có trong phân cảnh hiện hành.")
-    if args.part != "frame" and stage not in ("produce", "final", "ready"):
+    field = "location" if args.part == "location" else "id"
+    if args.target not in {s.get(field) for s in ctx.get("shots", [])}:
+        raise ValueError("Mã shot hoặc địa điểm chưa có trong phân cảnh hiện hành.")
+    if args.part in ("video", "voice", "sound") and stage not in ("produce", "final", "ready"):
         raise ValueError("Cần duyệt storyboard và chọn giọng trước khi sửa clip/tiếng.")
     notes = take_notes(ep)
-    key = f"{args.part}/{args.shot}"
-    notes[key] = {"revision": notes.get(key, {}).get("revision", 0) + 1, "reason": args.reason}
+    key = f"{args.part}/{args.target}"
+    note = {"revision": notes.get(key, {}).get("revision", 0) + 1, "reason": args.reason}
+    if args.part == "location":
+        path = ctx.get("locations", {}).get(args.target)
+        if path is not None:
+            note["base"] = path.relative_to(ep).as_posix()
+        elif notes.get(key, {}).get("base"):
+            note["base"] = notes[key]["base"]
+    notes[key] = note
     save(ep / "retakes.json", notes)
 
 
@@ -250,7 +277,7 @@ def main():
             group = parser.add_mutually_exclusive_group(required=True)
             group.add_argument("--pilot", action="store_true")
             group.add_argument("--brief")
-            parser.add_argument("--from-episode", type=Path, help="Kế thừa ảnh, giọng, bible và diễn biến tập trước.")
+            parser.add_argument("--from-episode", type=Path, help="Kế thừa nhân vật, bối cảnh, giọng và diễn biến tập trước.")
         elif cmd == "run":
             parser.add_argument("--live", action="store_true", help="Cho phép gọi API sản xuất tính phí.")
             parser.add_argument("--limit", type=int, help="Giới hạn số yêu cầu tạo nội dung của lần chạy.")
@@ -268,8 +295,8 @@ def main():
             parser.add_argument("den")
             parser.add_argument("van")
         elif cmd == "retake":
-            parser.add_argument("part", choices=("frame", "video", "voice", "sound"))
-            parser.add_argument("shot")
+            parser.add_argument("part", choices=("location", "frame", "video", "voice", "sound"))
+            parser.add_argument("target", help="Mã địa điểm hoặc mã shot.")
             parser.add_argument("reason")
         elif cmd == "release":
             parser.add_argument("destination", type=Path)

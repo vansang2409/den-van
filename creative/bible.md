@@ -46,6 +46,8 @@ Nhà mái ngói cũ, sân gạch, bờ ao, giếng, quán nước đầu làng, 
 
 Ảnh giống phim quay động vật thật. Chất liệu hiện rõ khi ánh sáng tự nhiên chạm vào ngói, gạch, nước và lông. Đặt máy ở tầm quan sát của chó hoặc mèo khi cần theo hành động nhỏ. Ngôn ngữ của hai bạn nằm trong phần tiếng; mắt, miệng, chân và trọng lượng giữ cách vận động của loài. Dấu chân trên nền ướt, bóng đổ và vị trí đạo cụ phải nối được qua hai shot. Tránh đưa mặt người sản xuất vào cả khung rộng lẫn mặt phản chiếu.
 
+Khi quay lại một địa điểm, dùng đúng mã và ảnh chuẩn đã duyệt. Giữ các mốc kiến trúc, vật liệu và quan hệ không gian giữa chúng qua mỗi tập. Ánh sáng, thời tiết và đạo cụ di động theo diễn biến của tập mới. Khi quay lại với Đen và Vằn, dùng lại ảnh thật và hồ sơ nhận diện đã duyệt, chú ý màu lông, hoa văn, hình tai, màu mắt, vóc dáng và tỉ lệ giữa hai bạn.
+
 ### Bố trí đề xuất cho tập “Chừa tui một viên”
 
 - Từ sân đi vào nhà lần lượt qua mép mái, chõng tre, bậc cửa. Chõng đặt dọc tường; đầu gần cột dễ hắt mưa, đầu phía cửa kín gió hơn. Dải nền dưới chõng có thể nằm được ở cả hai đầu khi trời vừa mưa.

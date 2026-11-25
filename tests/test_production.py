@@ -70,7 +70,7 @@ class ProductionTests(unittest.TestCase):
             root = Path(tmp)
             audio = root / "speech.mp3"
             media.run("ffmpeg", ["-f", "lavfi", "-i", "sine=frequency=300", "-t", "0.5", str(audio)])
-            shot = dict(id="S001", action="Nằm", continuity="ngước", visual="sân",
+            shot = dict(id="S001", action="Nằm", continuity="ngước", visual="sân", location="nha-mai-ngoi",
                         camera="toàn", cast=["Đen"], duration=3,
                         lines=[dict(who="Đen", text="Ơ!", start=0.2, end=1.1),
                                dict(who="Vằn", text="Kìa!", start=1.5, end=2.4)])
@@ -80,15 +80,18 @@ class ProductionTests(unittest.TestCase):
                 self.assertEqual(media.stream_duration(media.inspect_file(track), "audio", "voice"), 3)
                 self.assertEqual(prod.voice_asset(root, shot, voices, {}), track)
                 self.assertEqual(voice.call_count, 2)
-            clip, ref = root / "clip.mp4", root / "ref.jpg"
+            clip, ref, location = root / "clip.mp4", root / "ref.jpg", root / "location.jpg"
             media.run("ffmpeg", ["-f", "lavfi", "-i", "color=size=160x90:rate=25",
                                  "-t", "3", "-pix_fmt", "yuv420p", str(clip)])
             media.run("ffmpeg", ["-i", str(clip), "-frames:v", "1", str(ref)])
+            shutil.copy2(ref, location)
             with patch.object(prod.providers, "response", return_value={"pass": False, "reason": "sai lông"}) as qc:
                 for _ in range(2):
                     with self.assertRaisesRegex(ValueError, "sai lông"):
-                        prod.visual_qc(root/"qc", shot, ref, clip, {"Đen": [ref]}, "")
-                self.assertEqual(len(qc.call_args.args[2]), 5)
+                        prod.visual_qc(root/"qc", shot, ref, clip, {"Đen": [ref]}, "", location)
+                self.assertIn("ảnh chuẩn bối cảnh nha-mai-ngoi", qc.call_args.args[1])
+                self.assertEqual(qc.call_args.args[2][:3], [ref, location, ref])
+                self.assertEqual(len(qc.call_args.args[2]), 6)
                 self.assertEqual(qc.call_count, 1)
 
 

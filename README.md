@@ -23,11 +23,11 @@ Bạn có thể gửi quyết định hoặc góp ý ngay trong chat. Nếu dùn
 | Duyệt kịch bản | `.\studio.ps1 approve episodes/tap-01 script MA_PHIEN_BAN` |
 | Gắn ảnh thật | `.\studio.ps1 ref episodes/tap-01 Đen 'D:\anh\den.jpg'` và `.\studio.ps1 ref episodes/tap-01 Vằn 'D:\anh\van.jpg'`. Có thể thêm 1–4 góc mỗi con. Dùng `--replace` để thay bộ ảnh của một con. |
 | Chạy đến mốc kế | `.\studio.ps1 run episodes/tap-01 --live`. Để chỉ dùng tối đa 5 yêu cầu tạo nội dung trong lần chạy này, thêm `--limit 5`. Giá mỗi yêu cầu phụ thuộc công cụ. |
-| Duyệt hình | Mở `storyboard.html` trong thư mục tập, so ảnh gốc với từng keyframe, xem thời lượng, hành động và cue thoại. Dùng `.\studio.ps1 approve episodes/tap-01 board MA_PHIEN_BAN`. |
+| Duyệt hình | Mở `storyboard.html` trong thư mục tập để đối chiếu ảnh gốc của Đen, Vằn và ảnh chuẩn bối cảnh với từng keyframe. Dùng `.\studio.ps1 approve episodes/tap-01 board MA_PHIEN_BAN`. |
 | Chọn giọng | `.\studio.ps1 voices episodes/tap-01 VOICE_ID_DEN VOICE_ID_VAN`. Dùng ID hai giọng Việt đã nghe thử trong tài khoản ElevenLabs. Có thể đặt trước khi duyệt hình. |
 | Sửa một shot | `.\studio.ps1 retake episodes/tap-01 video S012 'Giữ chân sau trên nền gạch khi quay đầu'`, rồi chạy lại. Chọn `frame`, `video`, `voice` hoặc `sound` theo hạng mục. |
 | Duyệt và xuất | Xem phim ngang, đoạn dọc, nghe thoại và kiểm tra nội dung đăng ở thư mục `status` chỉ ra. Dùng `.\studio.ps1 approve episodes/tap-01 final MA_PHIEN_BAN`, sau đó `.\studio.ps1 release episodes/tap-01 releases/tap-01`. Gói này sẵn sàng để chủ kênh đăng. |
-| Làm tập tiếp | `.\studio.ps1 init episodes/tap-02 --from-episode episodes/tap-01 --brief 'Một buổi trông sân ở làng quê'`. Khi tập trước đã duyệt hình, lệnh kế thừa ảnh, bible, giọng đã chọn và kịch bản để giữ liên tục. Với series mới, chỉ cần `init` và `--brief`. |
+| Làm tập tiếp | `.\studio.ps1 init episodes/tap-02 --from-episode episodes/tap-01 --brief 'Một buổi trông sân ở làng quê'`. Lệnh kế thừa ảnh thật, hồ sơ nhận diện, ảnh chuẩn bối cảnh, bible, giọng đã chọn và kịch bản từ tập trước đã duyệt hình. |
 
 ### Cấu hình dịch vụ
 
@@ -56,6 +56,12 @@ Các vai trò dùng chung hợp đồng bàn giao theo shot. Phần sáng tạo 
 | 12–13 | Publishing Manager, Film Editor, Executive Producer | Soạn tiêu đề, mô tả, hashtag và caption riêng cho TikTok, Reels, Shorts. Chọn timecode thumbnail và đoạn dọc, dựng file thực. **Chủ dự án duyệt gói cuối trước khi xuất.** |
 
 Mỗi tập có lịch sử tại `approvals.json`. Khi đổi kịch bản, hệ thống yêu cầu duyệt lại kịch bản. Khi đổi ảnh, keyframe hoặc phân cảnh, hệ thống tính lại phiên bản storyboard. Khi đổi clip bằng `retake`, chọn lại giọng, thay nhạc hoặc sửa tệp trong gói cuối, lệnh xuất đối chiếu lại phiên bản được duyệt. Khóa theo thư mục tập giúp hai phiên chạy tránh đặt trùng cùng một job. Mã job đã lưu cho phép tiếp tục thăm dò sau khi mất kết nối.
+
+### Giữ hình ảnh nhất quán qua các tập
+
+Mỗi địa điểm có một mã dùng chung. Ví dụ `nha-mai-ngoi` bao gồm sân, hiên và ngưỡng cửa của cùng một nhà. Lần đầu xuất hiện, studio tạo một ảnh chuẩn góc rộng để bạn duyệt cùng storyboard. Các shot quay lại địa điểm đó dùng ảnh chuẩn để giữ vật liệu, mốc cố định và bố cục. Góc quay, ánh sáng, thời tiết và đạo cụ di động thay đổi theo nội dung. Bước QC đối chiếu ảnh chuẩn và ảnh nhân vật với khung đầu, giữa và cuối clip.
+
+Khi nối tập bằng `--from-episode`, runner ghi mã storyboard nguồn và mang theo cả những địa điểm đã duyệt từ các tập trước đó. Nếu cần sửa một địa điểm, dùng `.\studio.ps1 retake episodes/tap-01 location nha-mai-ngoi 'Giữ sân gạch và mở rộng góc thấy cột hiên'`. Studio lấy ảnh hiện hành làm gốc, dựng lại các shot liên quan và chờ duyệt storyboard mới.
 
 ### Kiểm tra và xử lý lỗi
 
