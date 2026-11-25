@@ -1,6 +1,6 @@
-# Tập thử · Chừa tui một viên
+# Tập thử · Chừa tao một viên
 
-**Bản nháp 01, chờ chủ dự án duyệt kịch bản.** Thời lượng kể chuyện dự kiến **8 phút 40 giây**. Các mốc dưới đây dành cho buổi đọc và thử nhịp, trước khi lập danh sách cảnh quay. Hai vai dùng “tui”, “ông”, “bà” trong bản đọc thử. Ngoại hình và giọng chính thức đang chờ tư liệu và lựa chọn của chủ dự án.
+**Bản nháp 02, đã chỉnh theo góp ý.** Thời lượng dự kiến **8 phút 40 giây**. Đen là chó đực, Vằn là mèo đực. Hai bạn xưng “tao – mày”.
 
 Một cơn mưa dồn hai bạn xuống gầm chõng tre. Muốn nằm duỗi một mình, Vằn bày cho Đen cách tìm viên gạch “khô nhất nhà”. Tới lúc thật sự cần một chỗ khô, chính Vằn lại phải đi tìm Đen.
 
@@ -10,21 +10,21 @@ Giọt mưa đầu tiên rơi trúng giữa sân. Đen đang ngửi một cái l
 
 **Đen** — Xích vô chút coi. Mưa.
 
-**Vằn** — Biết. Tui vô trước ông là vì vậy đó.
+**Vằn** — Biết. Tao vô trước mày là vì vậy đó.
 
-**Đen** — Tui đâu có hỏi ai coi trời giỏi hơn ai.
+**Đen** — Tao đâu có hỏi ai coi trời giỏi hơn ai.
 
 Đen định chui vào đầu chõng gần cột. Vằn nhích ra vừa đủ đặt một chân trên viên gạch trước mũi Đen. Đen thử đầu kia. Đuôi Vằn còn nằm vắt ngang. Hai bạn nghe hạt mưa gõ lộp bộp vào chiếc thau nhôm ngoài sân.
 
-**Đen** — Bà nằm có một mình mà sao đầu nào cũng gặp bà hết vậy?
+**Đen** — Mày nằm có một mình mà sao đầu nào cũng gặp mày hết vậy?
 
-**Vằn** — Tui chọn khéo.
+**Vằn** — Tao chọn khéo.
 
 ### 00:55–02:05 · Chuyên gia coi gạch
 
 Đen dò chân lên viên sát cột. Vằn rụt chân mình lại; mặt gạch vừa lộ ra có một dấu ẩm. Vằn nhìn dấu chân rồi nhìn Đen. Nó vừa nghĩ được một chuyện cực kỳ có lợi cho cái lưng đang duỗi.
 
-**Vằn** — Ông thấy vệt ướt chưa? Viên này dột. Ở đây chỉ có một viên khô nhất thôi. Ông kiếm trúng, tui nhường nguyên viên.
+**Vằn** — Mày thấy vệt ướt chưa? Viên này dột. Ở đây chỉ có một viên khô nhất thôi. Mày kiếm trúng, tao nhường nguyên viên.
 
 **Đen** — Sao kiếm?
 
@@ -32,13 +32,13 @@ Giọt mưa đầu tiên rơi trúng giữa sân. Đen đang ngửi một cái l
 
 Đen làm y như lời. Nó chăm chú nghe. Tiếng đầu ở tàu lá ngoài sân, tiếng thứ hai dội trong thau. Tiếng thứ ba nhỏ quá, Đen nấn ná đếm lại từ đầu. Nhấc chân lên, thấy một dấu rõ mồn một.
 
-**Đen** — Hay thiệt. Nó dột đúng dưới chân tui.
+**Đen** — Hay thiệt. Nó dột đúng dưới chân tao.
 
 **Vằn** — Ờ. Mái này… dột kỹ lắm.
 
 Đen thử viên kế. Lại một dấu nữa. Vằn đổi bên nằm, khoan khoái đặt cằm lên hai chân. Đen vừa bước được ba viên thì đứng khựng.
 
-**Đen** — Khoan. Đâu có giọt nào rớt vô lưng tui đâu mà nó xuống tới dưới chân?
+**Đen** — Khoan. Đâu có giọt nào rớt vô lưng tao đâu mà nó xuống tới dưới chân?
 
 Vằn vẫn nằm im. Ngoài sân trời bắt đầu đổ hạt mau.
 
@@ -46,7 +46,7 @@ Vằn vẫn nằm im. Ngoài sân trời bắt đầu đổ hạt mau.
 
 Đen lần ngược hàng dấu chân. Viên nào cũng chỉ ướt một khoảnh bằng đúng bàn chân nó. Nó vòng qua chân chõng, đặt chân lên cả bậc cửa có mái che sâu. Một dấu in cạnh mũi Vằn. Bên cạnh dấu mới, vệt nước lấp lánh trên chân Đen.
 
-**Đen** — Hay là mái nó đi theo tui?
+**Đen** — Hay là mái nó đi theo tao?
 
 **Vằn** — Mái nhà làm sao đi được.
 
@@ -54,11 +54,11 @@ Vằn vẫn nằm im. Ngoài sân trời bắt đầu đổ hạt mau.
 
 Đen ngồi xuống, liếm qua bàn chân ướt. Nó để chân lên viên gạch ngay sát chỗ Vằn vừa rút chân. Hai dấu cạnh nhau, một của chó, một của mèo. Vằn nhìn sang thau nhôm, làm như tiếng mưa hay lắm.
 
-**Đen** — Bà cũng dột luôn hả?
+**Đen** — Mày cũng dột luôn hả?
 
-**Vằn** — Thôi được rồi. Ông phát hiện nhà mình có chân. Giỏi. Giờ ông muốn nằm đâu?
+**Vằn** — Thôi được rồi. Mày phát hiện nhà mình có chân. Giỏi. Giờ mày muốn nằm đâu?
 
-**Đen** — Hồi nãy tui chỉ xin một chút. Giờ tui muốn nằm ngay cái chỗ bà đang giả bộ ngủ đó.
+**Đen** — Hồi nãy tao chỉ xin một chút. Giờ tao muốn nằm ngay cái chỗ mày đang giả bộ ngủ đó.
 
 Vằn nhắm mắt thật. Đen nằm thụp bên bậc cửa, sát đầu trong của chõng. Đầu kia vẫn khô. Gió thổi một loạt hạt mưa chéo vào chân cột. Vằn hé mắt ngó khoảng trống nó vừa giành được.
 
@@ -76,9 +76,9 @@ Nước từ hai đường ngói nhập vào một mối. Một bụm nước t�
 
 Hai bạn nín nghe. Mưa trên ngói rào thành một lớp dày. Một dòng nhỏ chạy theo vết nứt tới chân cột. Đen thập thò ngửi ngoài mép chõng. Đúng lúc đó một bụm nữa đánh xuống thau. Nó rụt vào, nằm ép sát bậc cửa.
 
-**Vằn** — Ông sợ cái thau à? Bữa ăn cái gì kêu leng keng là ông có mặt đầu tiên mà.
+**Vằn** — Mày sợ cái thau à? Bữa ăn cái gì kêu leng keng là mày có mặt đầu tiên mà.
 
-**Đen** — Bữa ăn tui biết lúc nào nó kêu. Với lại… ít ra kêu xong còn có cái ăn.
+**Đen** — Bữa ăn tao biết lúc nào nó kêu. Với lại… ít ra kêu xong còn có cái ăn.
 
 Vằn chờ Đen cười. Đen vẫn dỏng tai nghe về phía sân. Vằn thôi chọc. Nước lùa tới đầu chõng gần cột, thấm dần vào chỗ nó đang ngồi.
 
@@ -86,41 +86,41 @@ Vằn chờ Đen cười. Đen vẫn dỏng tai nghe về phía sân. Vằn thô
 
 Vằn đứng lên khi nước vừa chạm bụng. Nó nhấc lần lượt từng chân, tìm lại mấy viên ban nãy. Dòng nước đang loang qua dấu chân Đen. Một dấu mất, rồi hai dấu nhập vào nhau. Viên kế chân cột cũng sẫm màu mặc dù chẳng ai đứng lên. Lần này mái dột thật.
 
-**Vằn** — Đen, chỗ ông hồi nãy coi tới đâu rồi?
+**Vằn** — Đen, chỗ mày hồi nãy coi tới đâu rồi?
 
-**Đen** — Tới cái chỗ bà bảo đưa chân lên.
+**Đen** — Tới cái chỗ mày bảo đưa chân lên.
 
 **Vằn** — Ừ, cái khúc sau khúc đó kìa. Còn viên nào khô hông?
 
-**Đen** — Bà đợi chút. Tui coi cho. Lần này tui dùng mũi.
+**Đen** — Mày đợi chút. Tao coi cho. Lần này tao dùng mũi.
 
 Đen bò dọc bậc cửa phía trong. Nó hít dưới chân chõng, nghe nước quẹt trên đường nứt, lùi một vòng rồi nằm xuống. Bên má nó còn một khoảng gạch khô. Ở đầu ngoài, nước từ mái bây giờ rớt đều ngay trước mặt Vằn, nom như cả lối vào bị chặn.
 
-**Đen** — Đi sát tường. Đừng theo cái đường lúc tui đi thử. Cái đó nó vòng ra sân rồi vòng vô lại, tại hồi nãy tui tức quá.
+**Đen** — Đi sát tường. Đừng theo cái đường lúc tao đi thử. Cái đó nó vòng ra sân rồi vòng vô lại, tại hồi nãy tao tức quá.
 
 Vằn rướn cổ. Từ chỗ nó chỉ thấy mưa trắng và một chân chõng. Đen đợi. Tiếng nước trong thau lại dồn lên từng bụm.
 
-### 05:35–06:50 · Một viên cho bà
+### 05:35–06:50 · Một viên cho mày
 
 Đen thò đầu khỏi đầu trong, lộ ra ngay lúc thau kêu. Nó giật mình rụt vào, rồi lại thò ra. Lần này nó giữ nguyên ở đó. Vằn thấy bạn. Nó men theo tường, ngừng ngay chỗ vệt nước chảy qua rãnh giữa hai viên gạch. Đen nằm bên kia rãnh.
 
-**Đen** — Tui chừa cho bà một viên. Viên khô đó.
+**Đen** — Tao chừa cho mày một viên. Viên khô đó.
 
-**Vằn** — Một viên cho tui? Rồi ông nằm đâu?
+**Vằn** — Một viên cho tao? Rồi mày nằm đâu?
 
-**Đen** — Ban nãy bà nói nhường nguyên viên cho người kiếm được. Tui kiếm được, tui nhường tiếp. Có gì sai đâu?
+**Đen** — Ban nãy mày nói nhường nguyên viên cho người kiếm được. Tao kiếm được, tao nhường tiếp. Có gì sai đâu?
 
-**Vằn** — Không. Lần này ông hiểu đúng tới mức tui hết cãi được.
+**Vằn** — Không. Lần này mày hiểu đúng tới mức tao hết cãi được.
 
 Vằn bước qua rãnh, ngửi thử chỗ Đen chừa. Nó ngồi gọn về một phía. Đen đang sửa soạn rút ra thì Vằn dịch người thêm chút nữa. Đủ chỗ để Đen gác cằm lên phần gạch khô, thân nằm dọc bậc cửa. Hai bạn cùng nghe tiếng thau nhỏ giọt. Đen vẫn gồng mình mỗi khi nước trên mái bắt đầu dồn lại.
 
-**Vằn** — Hồi nãy ông biết tui xạo từ lúc nào?
+**Vằn** — Hồi nãy mày biết tao xạo từ lúc nào?
 
-**Đen** — Lúc thấy dấu chân bà. Mà cái vụ bà nhắm mắt ngủ, tui biết liền.
+**Đen** — Lúc thấy dấu chân mày. Mà cái vụ mày nhắm mắt ngủ, tao biết liền.
 
 **Vằn** — Sao?
 
-**Đen** — Bà ngủ thiệt, tui gọi tới chữ “ăn” bà mới dậy.
+**Đen** — Mày ngủ thiệt, tao gọi tới chữ “ăn” mày mới dậy.
 
 Vằn đợi. Đen không nói chữ nào nữa. Chỉ nghe mưa và nhịp thở. Lần đầu từ lúc đổ mưa, Vằn ló ra để nhìn cái thau thay bạn mình.
 
@@ -128,15 +128,15 @@ Vằn đợi. Đen không nói chữ nào nữa. Chỉ nghe mưa và nhịp th�
 
 Vằn trông thấy nước đọng ở đầu ngói, phình ra trước khi đổ thành bụm. Nó nghiêng đầu chờ thêm một lần cho chắc. Đen nhìn Vằn nhìn mái.
 
-**Vằn** — Ông nhắm mắt đi. Chừng nào nước tới, tui kêu.
+**Vằn** — Mày nhắm mắt đi. Chừng nào nước tới, tao kêu.
 
-**Đen** — Bà kêu trước hay sau?
+**Đen** — Mày kêu trước hay sau?
 
-**Vằn** — Ông hỏi rất trúng chuyên môn. Thử đi.
+**Vằn** — Mày hỏi rất trúng chuyên môn. Thử đi.
 
 Một nhịp. Hai nhịp. Vằn nói “tới”. Tiếng thau rền lên sau lời nó. Đen giật tai nhưng vẫn nằm yên. Lần sau Vằn kêu hơi sớm. Hai bạn đợi mãi. Một giọt nhỏ xíu rớt xuống kêu *tóc*. Đen mở mắt.
 
-**Đen** — Cái hồi nãy là bà báo cho con kiến hả?
+**Đen** — Cái hồi nãy là mày báo cho con kiến hả?
 
 **Vằn** — Nó cũng ở dưới mái này chớ bộ.
 

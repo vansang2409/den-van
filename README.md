@@ -2,7 +2,7 @@
 
 Studio sản xuất phim ngắn bằng tiếng Việt về đôi bạn chó Đen và mèo Vằn ở làng quê. Bạn đưa định hướng, góp ý và duyệt ba bản. Bộ điều phối lưu công việc theo tập để có thể tiếp tục sau khi đóng máy.
 
-**Tập 01 đang chờ duyệt kịch bản.** Trong *Chừa tui một viên*, Vằn muốn nằm một mình dưới gầm chõng nên dụ Đen đi tìm viên gạch khô nhất nhà. Thời lượng dự kiến là 8 phút 40 giây. [Đọc kịch bản tập thử](creative/pilot.md) · [Sổ tay nhân vật và thế giới phim](creative/bible.md) · [Khảo sát công cụ và chi phí](docs/cong-cu.md)
+**Tập 01 đang chờ duyệt kịch bản.** Trong *Chừa tao một viên*, Vằn muốn nằm một mình dưới gầm chõng nên dụ Đen đi tìm viên gạch khô nhất nhà. Thời lượng dự kiến là 8 phút 40 giây. [Đọc kịch bản tập thử](creative/pilot.md) · [Sổ tay nhân vật và thế giới phim](creative/bible.md) · [Khảo sát công cụ và chi phí](docs/cong-cu.md)
 
 ## Vận hành trên máy này
 

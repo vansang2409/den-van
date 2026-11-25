@@ -6,7 +6,7 @@
 
 | | Đen | Vằn |
 |---|---|---|
-| Loài | Chó | Mèo |
+| Loài và giới tính | Chó đực | Mèo đực |
 | Điều khiến khán giả thương | Đen tin lời bạn và rất hay giúp trước khi kịp nghĩ. Khi chuyện thật sự có vấn đề, Đen quay lại. | Vằn thích phần hơn. Tình thương thường lộ ở một việc nó chịu làm dù việc ấy hơi bất tiện. |
 | Nhịp hài theo định hướng | Nghe chữ nào hiểu đúng chữ ấy. Cơn ham ăn dễ đánh lạc hướng cả một lập luận đang rất nghiêm túc. | Khoái nghĩ kế. Càng gần bị lật tẩy càng đáp ngắn, càng cố tỏ ra mình đã tính hết. |
 | Cách thể hiện trên hình | Ngửi dấu vết, lùi khi nghe tiếng động, đổi hướng, nằm xuống, dừng chờ. Dùng tư thế và khoảng cách để kể chuyện. | Chọn chỗ nằm, dò nền bằng chân trước, né nước, nhảy một quãng phù hợp với mặt bằng, quay lại ngồi gần bạn. |
@@ -31,12 +31,12 @@ Ví dụ phiếu prompt chưa điền: “Dùng ảnh [mã ảnh thật] cho [nh
 
 ### Thử giọng
 
-Lời nghe như hai người bạn nói với nhau ở cự ly gần. Giọng lồng độc lập với miệng con vật. Hướng diễn thử cho Đen là hơi cuống khi giải thích, thật nhỏ khi sợ. Vằn bỏ một nhịp trước chữ chốt khi cà khịa. Chưa chọn vùng giọng, người đọc, giọng tổng hợp hoặc tuổi/giới tính của giọng.
+Đen và Vằn đều là đực. Hai bạn xưng “tao – mày”. Lời nghe như hai người bạn nói với nhau ở cự ly gần. Giọng lồng độc lập với miệng con vật. Hướng diễn thử cho Đen là hơi cuống khi giải thích, thật nhỏ khi sợ. Vằn bỏ một nhịp trước chữ chốt khi cà khịa. Chọn hai giọng nam Việt có sắc thái riêng. Vùng giọng, tuổi giọng và mẫu cụ thể chờ chủ dự án chọn.
 
 | Mẫu thử | Lời đọc | Điều cần nghe |
 |---|---|---|
-| Đen | “Tui chừa cho bà một viên. Viên khô đó.” | Câu đầu nói nhẹ như chuyện đương nhiên. Chữ “khô” có chút tự hào. |
-| Vằn | “Một viên cho tui? Rồi ông nằm đâu?” | Câu sau hạ giọng, lần này hỏi thật. |
+| Đen | “Tao chừa cho mày một viên. Viên khô đó.” | Câu đầu nói nhẹ như chuyện đương nhiên. Chữ “khô” có chút tự hào. |
+| Vằn | “Một viên cho tao? Rồi mày nằm đâu?” | Câu sau hạ giọng, lần này hỏi thật. |
 
 Khi chốt giọng, lưu đoạn thử người dùng đã chọn, cách đọc hai tên, mã giọng/mẫu thu, thông số tốc độ, khoảng cách micro hoặc thiết lập tổng hợp. Dùng lại các mẫu đó khi đối chiếu tập mới.
 
@@ -48,7 +48,7 @@ Nhà mái ngói cũ, sân gạch, bờ ao, giếng, quán nước đầu làng, 
 
 Khi quay lại một địa điểm, dùng đúng mã và ảnh chuẩn đã duyệt. Giữ các mốc kiến trúc, vật liệu và quan hệ không gian giữa chúng qua mỗi tập. Ánh sáng, thời tiết và đạo cụ di động theo diễn biến của tập mới. Khi quay lại với Đen và Vằn, dùng lại ảnh thật và hồ sơ nhận diện đã duyệt, chú ý màu lông, hoa văn, hình tai, màu mắt, vóc dáng và tỉ lệ giữa hai bạn.
 
-### Bố trí đề xuất cho tập “Chừa tui một viên”
+### Bố trí đề xuất cho tập “Chừa tao một viên”
 
 - Từ sân đi vào nhà lần lượt qua mép mái, chõng tre, bậc cửa. Chõng đặt dọc tường; đầu gần cột dễ hắt mưa, đầu phía cửa kín gió hơn. Dải nền dưới chõng có thể nằm được ở cả hai đầu khi trời vừa mưa.
 - Thau nhôm cũ để ngửa trên sân ngay dưới mép ngói, ở ngoài gầm chõng. Một vệt gạch nứt chạy từ chân cột tới rìa chõng. Đen và Vằn có thể men theo tường đổi chỗ, không cần băng qua dòng sâu.
